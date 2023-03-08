@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Mission9_tk2672.Models.ViewModels;
 
-namespace Mission9_tk2672.Controllers.Infrastructure
+namespace Mission9_tk2672.Infrastructure
 {
     [HtmlTargetElement("div", Attributes = "page-blah")]
     public class PaginationTagHelper : TagHelper
@@ -37,7 +37,7 @@ namespace Mission9_tk2672.Controllers.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i < PageBlah.TotalPages + 1; i++)
+            for (int i = 1; i <= PageBlah.TotalPages; i++)
             {
                 TagBuilder tb = new TagBuilder("a");
 

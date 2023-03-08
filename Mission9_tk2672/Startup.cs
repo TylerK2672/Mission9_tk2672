@@ -51,6 +51,21 @@ namespace Mission9_tk2672
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    "categoryPage",
+                    "{category}/Page{pageNum}",
+                    new { Controller = "Home", action = "Index" });
+                
+                endpoints.MapControllerRoute(
+                    name: "page",
+                    pattern: "page{pageNum}",
+                    defaults: new { Controller = "Home", action = "Index", pageNum = 1});
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", pageNum = 1});
+
                 endpoints.MapDefaultControllerRoute();
             });
         }

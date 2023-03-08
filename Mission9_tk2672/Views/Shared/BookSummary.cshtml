@@ -1,0 +1,25 @@
+﻿@{
+}
+
+@model Book
+
+<div class="card card-outline-primary m-1 p-1">
+    <div class="bg-light p-1">
+        <span class="display-3">@Model.Title</span>
+
+        <span class="display-6" style="float:right">
+            @Model.Author
+        </span>
+    </div>
+
+    <ul class="text-muted">
+        
+        <li>Publisher: @Model.Publisher</li>
+        <li>ISBN: @Model.Isbn</li>
+        <li>Classification: @Model.Classification</li>
+        <li>Category: @Model.Category</li>
+        <li>Page Count: @Model.PageCount</li>
+        <li>Price: @Model.Price</li>
+    </ul>
+
+</div>
