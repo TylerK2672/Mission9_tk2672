@@ -8,7 +8,5 @@ namespace Mission9_tk2672.Models
     public interface IBookstoreRepository
     {
         IQueryable<Book> Books { get; }
-
-        
     }
 }

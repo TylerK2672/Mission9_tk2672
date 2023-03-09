@@ -34,6 +34,7 @@ namespace Mission9_tk2672.Controllers
 
                 PageInfo = new PageInfo
                 {
+                    // ? is the if statement, : is the else statement
                     TotalNumProjects = 
                         (category == null 
                             ? repo.Books.Count() 

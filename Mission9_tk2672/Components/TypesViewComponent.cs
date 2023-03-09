@@ -20,6 +20,7 @@ namespace Mission9_tk2672.Components
         {
             ViewBag.SelectedCategory = RouteData?.Values["category"];
 
+            // like a sql query
             var types = repo.Books
                 .Select(x => x.Category)
                 .Distinct()

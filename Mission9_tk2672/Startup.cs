@@ -34,6 +34,13 @@ namespace Mission9_tk2672
             });
 
             services.AddScoped<IBookstoreRepository, EFBookstoreRepository>();
+
+            //allows razor pages
+            services.AddRazorPages();
+
+            // allows session
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +53,8 @@ namespace Mission9_tk2672
 
             // corresponds to wwwroot
             app.UseStaticFiles();
-
+            // allows session
+            app.UseSession();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -67,6 +75,8 @@ namespace Mission9_tk2672
                     new { Controller = "Home", action = "Index", pageNum = 1});
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
         }
     }

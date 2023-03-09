@@ -13,7 +13,7 @@
     </div>
 
     <ul class="text-muted">
-        
+
         <li>Publisher: @Model.Publisher</li>
         <li>ISBN: @Model.Isbn</li>
         <li>Classification: @Model.Classification</li>
@@ -22,4 +22,14 @@
         <li>Price: @Model.Price</li>
     </ul>
 
+    <form method="post" asp-page="/AddBook">
+
+        <!-- these inputs only hold information and are not for the user -->
+        <input type="hidden" asp-for="@Model.BookId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()"/>
+
+        <span class="card-text">
+            <button type="submit" class="btn btn-success btn-sm float-end">Buy Book</button>
+        </span>
+    </form>
 </div>
