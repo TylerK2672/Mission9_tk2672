@@ -15,9 +15,10 @@ namespace Mission9_tk2672.Pages
         //doing things we would have typically done in the controller, but now we don't have one so we do it here
         private IBookstoreRepository repo { get; set; }
 
-        public AddBookModel (IBookstoreRepository temp)
+        public AddBookModel (IBookstoreRepository temp, Basket b)
         {
             repo = temp;
+            basket = b;
         }
 
         // from the basket classs
@@ -27,17 +28,21 @@ namespace Mission9_tk2672.Pages
         public void OnGet(string returnUrl)
         {
             ReturnUrl = returnUrl ?? "/";
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
+            
         }
 
         public IActionResult OnPost(int bookId, string returnUrl)
         {
             Book b = repo.Books.FirstOrDefault(x => x.BookId == bookId);
-
-            basket = HttpContext.Session.GetJson<Basket>("basket") ?? new Basket();
+            
             basket.AddItem(b, 1);
 
-            HttpContext.Session.SetJson("basket", basket);
+            return RedirectToPage(new { ReturnUrl = returnUrl });
+        }
+
+        public IActionResult OnPostRemove (int bookId, string returnUrl)
+        {
+            basket.RemoveItem(basket.Items.First(x => x.Book.BookId == bookId).Book);
 
             return RedirectToPage(new { ReturnUrl = returnUrl });
         }

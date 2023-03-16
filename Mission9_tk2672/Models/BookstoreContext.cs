@@ -18,6 +18,6 @@ namespace Mission9_tk2672.Models
         }
 
         public DbSet<Book> Books { get; set; }
-
+        public DbSet<Purchase> Purchases { get; set; }
     }
 }
